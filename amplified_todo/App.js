@@ -11,16 +11,16 @@ Amplify.configure(awsExports);
 import HomeScreen from './src/screens/HomeScreen';
 import StartTestScreen from './src/screens/StartTestScreen';
 
-import introText from './src/hooks/IntroText'
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="StartTest" component={StartTestScreen} options={{ headerShown: false }} />
+      <Stack.Navigator initialRouteName="HomeScreen">
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="StartTestScreen" component={StartTestScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

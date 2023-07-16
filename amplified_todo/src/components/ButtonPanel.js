@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 150,
+    // paddingTop: 70,
+    // paddingBottom: 120,
     backgroundColor: '#fee', // Give it a background color so you can see it
   },
 });

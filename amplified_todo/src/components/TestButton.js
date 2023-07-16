@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 
 export default function TestButton(props) {
-  const { onPress, title = 'Save' } = props;
+  const { onPress, title = 'Save'} = props;
   return (
     <Pressable
     style={({ pressed }) => [
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 10,
     backgroundColor: 'black',
-    width: '50%',
+    width: '70%',
     height: '15%',
   },
   text: {

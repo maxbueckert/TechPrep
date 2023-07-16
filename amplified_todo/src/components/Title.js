@@ -1,25 +1,36 @@
-import { View, Text, Button, StyleSheet, Dimensions} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
-export default function Title({style}) {
-    return (
-      <View style = {[styles.container, style]}>
-        <Text style = {styles.text}>TechPrep</Text>
+import TitleButton from '../components/TitleButton';
+
+export default function Title({ style, home = false }) {
+  const { height } = Dimensions.get('window');
+  const titleHeight = height * 0.15; // 15% of the screen height
+
+  return (
+    <View style={[styles.container, style, { height: titleHeight }]}>
+      {!home && <TitleButton fn="back" />}
+      <View style={styles.titleContainer}>
+        <Text style={styles.text}>TechPrep</Text>
       </View>
-    );
-  }
-
-
-const {height} = Dimensions.get('window');
+      {!home && <TitleButton fn="home" onPress = {() => navigation.navigate('HomeScreen')}/>}
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#ffa',
-        justifyContent: 'center',
-        alignItems: 'center', 
-        width: '100%',
-        flex: .20,
-    },
-    text: {
-        fontSize: height*.07, 
-    }
+  container: {
+    backgroundColor: '#ffa',
+    flexDirection: 'row',
+    padding: 20,
+    alignItems: 'center',
+  },
+  titleContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 40, // Adjust the font size as needed
+  },
 });

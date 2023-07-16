@@ -4,10 +4,10 @@ import introText from '../hooks/IntroText'
 
 
 
-export default function TextBody({words, style}) {
+export default function TextBody({words, style, fontSize = 20}) {
     return (
       <View style = {[styles.container, style]}>
-        <Text>{words}</Text>
+        <Text style = {[styles.text, fontSize]}>{words}</Text>
       </View>
     );
   }
@@ -21,8 +21,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center', 
         width: '100%',
+        height: '15%',
     },
     text: {
-        fontSize: height*.05, 
+        // fontSize: height*.05, 
+        fontSize: 20,
     }
 });

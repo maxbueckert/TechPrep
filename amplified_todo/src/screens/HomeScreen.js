@@ -11,18 +11,13 @@ import introText from '../hooks/IntroText'
 export default function HomeScreen({ navigation }) {
   return (
     <View style = {styles.container}>
-      <Title style = {styles.title}></Title>
-        {/* <TextBody words = {introText} style = {styles.text}></TextBody> */}
+      <Title home = {true} ></Title>
+        <TextBody words = {introText} style = {styles.text}></TextBody>
           <ButtonPanel style = {styles.buttons}>
-            <TestButton title = "Start New Test"></TestButton>
+            <TestButton title = "Start New Test" onPress={() => navigation.navigate('StartTestScreen')}></TestButton>
             <TestButton title = "Scoreboard"></TestButton>
             <TestButton title = "Settings"></TestButton>
           </ButtonPanel>
-
-      {/* <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('StartTestScreen')}
-      /> */}
     </View>
   );
 }
@@ -32,11 +27,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     },
-    // text: {
-    //   flex: .4,
-    // },
-    buttons : {
+    text: {
       flex: 1,
+    },
+    buttons : {
+      flex: 7,
     }
 
 });

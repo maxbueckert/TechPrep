@@ -1,3 +1,3 @@
-const IntroText = "Options:";
+const IntroText = "";
 
 export default IntroText;
