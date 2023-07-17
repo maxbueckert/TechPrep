@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/helloworld": {
+      "name": "/helloworld",
+      "lambdaFunction": "helloWorldLocalFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

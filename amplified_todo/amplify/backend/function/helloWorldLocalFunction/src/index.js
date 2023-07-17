@@ -1,4 +1,8 @@
-
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	dev_1
+Amplify Params - DO NOT EDIT */
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
@@ -13,9 +17,6 @@ exports.handler = async (event) => {
     //      "Access-Control-Allow-Headers": "*"
     //  },
         body: JSON.stringify('Hello from Lambda!'),
-        // will this show up????
-        // will this appear on git?
-        // how about this?
-        // this????
+        // can we see this?
     };
 };

@@ -15,6 +15,9 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "dev1": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -47,12 +50,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "functionName",
+            "helloWorldLocalFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "functionName",
+                  "helloWorldLocalFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -69,6 +72,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "dev_1": {
+              "Ref": "dev1"
             }
           }
         },
@@ -89,12 +95,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsexpotestLambdaRole78454244",
+            "awsexpotestLambdaRole76cafbe5",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsexpotestLambdaRole78454244",
+                  "awsexpotestLambdaRole76cafbe5",
                   "-",
                   {
                     "Ref": "env"

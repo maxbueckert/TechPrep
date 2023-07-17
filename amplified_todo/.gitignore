@@ -10,6 +10,9 @@ npm-debug.*
 *.orig.*
 # web-build/
 
+# i added this 
+amplified_todo/amplify/backend/
+
 # macOS
 .DS_Store
 
@@ -24,7 +27,6 @@ amplify/mock-data
 amplify/mock-api-resources
 amplify/backend/amplify-meta.json
 amplify/backend/.temp
-amplify/backend/function
 build/
 dist/
 node_modules/

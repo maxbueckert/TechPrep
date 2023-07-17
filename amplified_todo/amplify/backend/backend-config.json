@@ -1,25 +1,50 @@
 {
+  "api": {
+    "helloWorldAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "helloWorldLocalFunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "function": {
-    "functionName": {
+    "helloWorldLocalFunction": {
       "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_functionName_deploymentBucketName": {
+    "AMPLIFY_function_helloWorldLocalFunction_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "functionName"
+          "resourceName": "helloWorldLocalFunction"
         }
       ]
     },
-    "AMPLIFY_function_functionName_s3Key": {
+    "AMPLIFY_function_helloWorldLocalFunction_dev1": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "functionName"
+          "resourceName": "helloWorldLocalFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_helloWorldLocalFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "helloWorldLocalFunction"
         }
       ]
     }
