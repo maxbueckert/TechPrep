@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fa5',
         justifyContent: 'center',
         alignItems: 'center', 
-        width: '100%',
-        height: '15%',
+        // width: '100%',
     },
     text: {
         // fontSize: height*.05, 

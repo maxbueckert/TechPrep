@@ -6,6 +6,9 @@ import TextBody from '../components/TextBody';
 import TestButton from '../components/TestButton';
 import ButtonPanel from '../components/ButtonPanel';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import introText from '../hooks/IntroText'
 
 export default function HomeScreen({ navigation }) {

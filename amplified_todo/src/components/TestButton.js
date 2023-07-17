@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Dimensions } from 'react-native';
 
 export default function TestButton(props) {
   const { onPress, title = 'Save'} = props;
@@ -14,6 +14,8 @@ export default function TestButton(props) {
     </Pressable>
   );
 }
+let {height} = Dimensions.get('window');
+
 
 const styles = StyleSheet.create({
   button: {
@@ -26,6 +28,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     width: '70%',
     height: '15%',
+    marginTop: height * 0.08,
+    marginBottom: height * 0.03,
+    
   },
   text: {
     fontSize: 16,

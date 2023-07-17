@@ -7,8 +7,10 @@ import TextBody from '../components/TextBody';
 import ButtonPanel from '../components/ButtonPanel';
 import TestButton from '../components/TestButton';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function StartTestScreen() {
+export default function StartTestScreen({navigation}) {
 
   const [difficulty, setDifficulty] = useState(0);
   const [domain, setDomain] = useState(null);
@@ -20,63 +22,29 @@ export default function StartTestScreen() {
       <Title></Title>
 
       {!difficultyChosen && (
-      <View style = {{flex: 1}}>
-        <TextBody
-              words = "Select your difficulty"
-              style = {styles.text}>
-        </TextBody>
-
-      <ButtonPanel style = {styles.buttons}>
-            <TestButton title = "Beginner" 
-                      onPress={() => {
-                          setDifficulty(0)
-                          setDifficultyChosen(true);
-                          }}>
-              </TestButton>
-              <TestButton title = "Intermediate" 
-                      onPress={() => {
-                          setDifficulty(1)
-                          setDifficultyChosen(true);
-                          }}>
-              </TestButton>
-              <TestButton title = "Advanced" 
-                      onPress={() => {
-                          setDifficulty(2)
-                          setDifficultyChosen(true);
-                          }}>
-              </TestButton>
-      </ButtonPanel>
-      </View>)};
+        <View style={{flex: 8}}>
+          <TextBody words = "Select your difficulty" style = {styles.text}/>
+          <ButtonPanel style = {styles.buttons}>
+            <TestButton title = "Beginner" onPress={() => { setDifficulty(0); setDifficultyChosen(true); }}/>
+            <TestButton title = "Intermediate" onPress={() => { setDifficulty(1); setDifficultyChosen(true); }}/>
+            <TestButton title = "Advanced" onPress={() => { setDifficulty(2); setDifficultyChosen(true); }}/>
+          </ButtonPanel>
+        </View>
+      )}
 
       {difficultyChosen && (
-      <View style = {{flex: 1}}>
-      <TextBody
-            words = "Select your domain"
-            style = {styles.text}>
-      </TextBody>
-        <ButtonPanel style = {styles.buttons}>
-            <TestButton title = "Frontend" 
-                      onPress={() => {
-                          setDomain('frontend');
-                          }}>
-              </TestButton>
-              <TestButton title = "Backend" 
-                      onPress={() => {
-                        setDomain('backend');
-                          }}>
-              </TestButton>
-              <TestButton title = "Fullstack" 
-                      onPress={() => {
-                        setDomain('fullstack');
-                          }}>
-              </TestButton>
-        </ButtonPanel> 
-        </View>)}
-  
+        <View style={{flex: 8}}>
+          <TextBody words = "Select your domain" style = {styles.text}/>
+          <ButtonPanel style = {styles.buttons}>
+            <TestButton title = "Frontend" onPress={() => { setDomain('frontend'); navigation.navigate('TestScreen')}}/>
+            <TestButton title = "Backend" onPress={() => { setDomain('backend'); navigation.navigate('TestScreen') }}/>
+            <TestButton title = "Fullstack" onPress={() => { setDomain('fullstack');navigation.navigate('TestScreen')}}/>
+          </ButtonPanel>
+        </View>
+      )}
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {
