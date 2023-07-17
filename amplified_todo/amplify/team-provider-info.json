@@ -16,7 +16,7 @@
         "testIntegration": {},
         "functionName": {
           "deploymentBucketName": "amplify-awsexpotest-dev-235017-deployment",
-          "s3Key": "amplify-builds/functionName-4b52394d67583441635a-build.zip"
+          "s3Key": "amplify-builds/functionName-77475730353848564a61-build.zip"
         }
       }
     }
