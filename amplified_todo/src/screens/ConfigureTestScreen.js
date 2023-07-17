@@ -10,7 +10,7 @@ import TestButton from '../components/TestButton';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-export default function StartTestScreen({navigation}) {
+export default function ConfigureTestScreen({navigation}) {
 
   const [difficulty, setDifficulty] = useState(0);
   const [domain, setDomain] = useState(null);
@@ -36,9 +36,9 @@ export default function StartTestScreen({navigation}) {
         <View style={{flex: 8}}>
           <TextBody words = "Select your domain" style = {styles.text}/>
           <ButtonPanel style = {styles.buttons}>
-            <TestButton title = "Frontend" onPress={() => { setDomain('frontend'); navigation.navigate('TestScreen')}}/>
-            <TestButton title = "Backend" onPress={() => { setDomain('backend'); navigation.navigate('TestScreen') }}/>
-            <TestButton title = "Fullstack" onPress={() => { setDomain('fullstack');navigation.navigate('TestScreen')}}/>
+            <TestButton title = "Frontend" onPress={() => { setDomain('frontend'); navigation.navigate('PressToStartTestScreen')}}/>
+            <TestButton title = "Backend" onPress={() => { setDomain('backend'); navigation.navigate('PressToStartTestScreen') }}/>
+            <TestButton title = "Fullstack" onPress={() => { setDomain('fullstack');navigation.navigate('PressToStartTestScreen')}}/>
           </ButtonPanel>
         </View>
       )}

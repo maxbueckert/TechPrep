@@ -5,11 +5,13 @@ import Title from '../components/Title';
 
 import StartTestButton from '../components/StartTestButton';
 
-export default function TestScreen({ onPress = () => {return null}, title = "Button" }) {
+export default function PressToStartTestScreen() {
     return (
         <View style = {styles.container}>
             <Title></Title>
-            <StartTestButton></StartTestButton>
+            <View style = {styles.buttonContainer}>
+                <StartTestButton></StartTestButton>
+            </View>
         </View>
     );
 }
@@ -19,6 +21,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         },
+    buttonContainer: {
+        flex: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor:'#f8e',
+    }
 });
 
 // const styles = StyleSheet.create({

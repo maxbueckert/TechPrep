@@ -11,7 +11,7 @@ export default function Title({ style, home = false }) {
   // const titleHeight = height * 0.15; // 15% of the screen height
   const navigation = useNavigation();
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style, home? styles.adjustedSize : null]}>
       {!home && <TitleButton fn="back" />}
       <View style={styles.titleContainer}>
         <Text style={styles.text}>TechPrep</Text>
@@ -37,4 +37,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 40, // Adjust the font size as needed
   },
+  adjustedSize: {
+    flex:1.14,
+  }
 });

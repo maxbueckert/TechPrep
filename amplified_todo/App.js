@@ -9,8 +9,9 @@ import awsExports from './src/aws-exports';
 Amplify.configure(awsExports);
 
 import HomeScreen from './src/screens/HomeScreen';
-import StartTestScreen from './src/screens/StartTestScreen';
-import TestScreen from './src/screens/TestScreen';
+import ConfigureTestScreen from './src/screens/ConfigureTestScreen';
+import PressToStartTestScreen from './src/screens/PressToStartTestScreen';
+import MultipleChoiceTestScreen from './src/screens/MultipleChoiceTestScreen';
 
 
 
@@ -21,8 +22,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeScreen">
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="StartTestScreen" component={StartTestScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="TestScreen" component={TestScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ConfigureTestScreen" component={ConfigureTestScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PressToStartTestScreen" component={PressToStartTestScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MultipleChoiceTestScreen" component={MultipleChoiceTestScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

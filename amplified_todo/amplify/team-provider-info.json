@@ -10,6 +10,15 @@
       "StackName": "amplify-awsexpotest-dev-235017",
       "StackId": "arn:aws:cloudformation:us-west-1:504929855679:stack/amplify-awsexpotest-dev-235017/87a830e0-2149-11ee-9a75-069192b002b1",
       "AmplifyAppId": "d2r8ojqeogz9tt"
+    },
+    "categories": {
+      "function": {
+        "testIntegration": {},
+        "functionName": {
+          "deploymentBucketName": "amplify-awsexpotest-dev-235017-deployment",
+          "s3Key": "amplify-builds/functionName-4b52394d67583441635a-build.zip"
+        }
+      }
     }
   }
 }

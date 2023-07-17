@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, View, Text, StyleSheet} from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
 import TestButton from '../components/TestButton';
 import ButtonPanel from '../components/ButtonPanel';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-import introText from '../hooks/IntroText'
+import getChatGptQuestion from '../hooks/getChatGptQuestion'
 
-export default function HomeScreen({ navigation }) {
-  return (
+export default function MultipleChoiceTestScreen({ navigation }) {
+
+    const [question, setQuestion] = useState(null);
+
+    useEffect(() => {
+        setQuestion(getChatGptQuestion());
+    }, []);
+
+
+    return (
     <View style = {styles.container}>
-      <Title home = {true}></Title>
-        <TextBody words = {introText} style = {styles.text}></TextBody>
-          <ButtonPanel style = {styles.buttons}>
+        <Title></Title>
+        <TextBody words = {question} style = {styles.text}></TextBody>
+            <ButtonPanel style = {styles.buttons}>
             <TestButton title = "Start New Test" onPress={() => navigation.navigate('ConfigureTestScreen')}></TestButton>
             <TestButton title = "Scoreboard"></TestButton>
             <TestButton title = "Settings"></TestButton>
-          </ButtonPanel>
+            </ButtonPanel>
     </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
