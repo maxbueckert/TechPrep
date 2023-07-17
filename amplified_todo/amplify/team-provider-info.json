@@ -1,0 +1,28 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsexpotest-dev-235017-authRole",
+      "UnauthRoleArn": "arn:aws:iam::504929855679:role/amplify-awsexpotest-dev-235017-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::504929855679:role/amplify-awsexpotest-dev-235017-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-awsexpotest-dev-235017-deployment",
+      "UnauthRoleName": "amplify-awsexpotest-dev-235017-unauthRole",
+      "StackName": "amplify-awsexpotest-dev-235017",
+      "StackId": "arn:aws:cloudformation:us-west-1:504929855679:stack/amplify-awsexpotest-dev-235017/87a830e0-2149-11ee-9a75-069192b002b1",
+      "AmplifyAppId": "d2r8ojqeogz9tt"
+    },
+    "categories": {
+      "function": {
+        "testIntegration": {},
+        "helloWorldLocalFunction": {
+          "dev1": "dev_1_val",
+          "deploymentBucketName": "amplify-awsexpotest-dev-235017-deployment",
+          "s3Key": "amplify-builds/helloWorldLocalFunction-56586c764d2b466e6145-build.zip"
+        }
+      },
+      "api": {
+        "helloWorldAPI": {}
+      }
+    }
+  }
+}
