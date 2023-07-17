@@ -1,9 +1,0 @@
-{
-  "lambdaLayers": [],
-  "environmentVariableList": [
-    {
-      "cloudFormationParameterName": "dev1",
-      "environmentVariableName": "dev_1"
-    }
-  ]
-}
