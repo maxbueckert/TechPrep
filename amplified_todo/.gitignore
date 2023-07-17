@@ -11,7 +11,7 @@ npm-debug.*
 # web-build/
 
 # i added this 
-amplified_todo/amplify/backend/
+amplify/backend/
 
 # macOS
 .DS_Store
