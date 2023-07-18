@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
 import ButtonPanel from '../components/ButtonPanel';
-import TestButton from '../components/TestButton';
+import TestButton from '../components/TestConfigButton';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

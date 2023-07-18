@@ -8,9 +8,12 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+temp/
+/temp/
+/temp
 # web-build/
 
-# i added this 
+# i added this
 amplify/backend/
 
 # macOS
@@ -30,7 +33,7 @@ amplify/backend/.temp
 build/
 dist/
 node_modules/
-# aws-exports.js
+aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
 amplifyconfiguration.dart

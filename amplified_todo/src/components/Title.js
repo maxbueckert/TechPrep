@@ -23,7 +23,7 @@ export default function Title({ style, home = false }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffa',
+    backgroundColor: '#89CFF0',
     flexDirection: 'row',
     padding: 20,
     alignItems: 'flex-end',

@@ -17,7 +17,7 @@ const {height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fa5',
+        backgroundColor: '#FED7D7',
         justifyContent: 'center',
         alignItems: 'center', 
         // width: '100%',

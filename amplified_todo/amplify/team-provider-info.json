@@ -13,11 +13,10 @@
     },
     "categories": {
       "function": {
-        "testIntegration": {},
         "helloWorldLocalFunction": {
           "dev1": "dev_1_val",
           "deploymentBucketName": "amplify-awsexpotest-dev-235017-deployment",
-          "s3Key": "amplify-builds/helloWorldLocalFunction-56586c764d2b466e6145-build.zip"
+          "s3Key": "amplify-builds/helloWorldLocalFunction-324a7272486762776b79-build.zip"
         }
       },
       "api": {

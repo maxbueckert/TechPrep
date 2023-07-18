@@ -3,7 +3,7 @@ import { Button, View, Text, StyleSheet} from 'react-native';
 
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
-import TestButton from '../components/TestButton';
+import TestButton from '../components/TestConfigButton';
 import ButtonPanel from '../components/ButtonPanel';
 
 import { NavigationContainer } from '@react-navigation/native';
