@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button, View, Text, StyleSheet} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,7 +17,7 @@ import {useDifficulty} from '../components/Context/TestContext'
 import TestAltOptionsPanel from '../components/TestAltOptionsPanel'
 
 
-let prevShuffledAnswer = null;
+
 
 
 export default function MultipleChoiceTestScreen({ navigation }) {
@@ -28,6 +28,8 @@ export default function MultipleChoiceTestScreen({ navigation }) {
   const [wrongAnswerOne, setWrongAnswerOne] = useState(null);
   const [wrongAnswerTwo, setWrongAnswerTwo] = useState(null);
   const [wrongAnswerThree, setWrongAnswerThree] = useState(null);
+
+  let prevShuffledAnswer = useRef([]);
 
   // reveal anwer states
   const [revealAnswer, setRevealAnswer] = useState(false);
@@ -91,10 +93,9 @@ export default function MultipleChoiceTestScreen({ navigation }) {
       return arr;
     }
 
-  const shuffledAnswers = revealAnswer? prevShuffledAnswer : shuffleArray(answers);
-  if (!revealAnswer) {
-    prevShuffledAnswer = shuffledAnswers;
-  }
+  const shuffledAnswers = revealAnswer? prevShuffledAnswer.current : shuffleArray(answers);
+  prevShuffledAnswer.current = shuffledAnswers;
+  
 
   
 
