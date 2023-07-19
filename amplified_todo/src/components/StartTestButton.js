@@ -31,7 +31,7 @@ export default function StartTestButton({style}) {
         <Pressable style={styles.circleButton} onPress={buttonDisabled? null : handlePress}>
             <Text 
             style={styles.buttonText}>
-            {count > 0 ? count + '...' : 'Press to Begin Test'}
+            {count > 0 ? count: 'Press to Begin Test'}
             </Text>
         </Pressable>
     );
@@ -52,5 +52,9 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontSize: 20,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        textAlign: 'center',
     },
 });

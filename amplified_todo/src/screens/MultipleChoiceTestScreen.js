@@ -7,10 +7,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
 import TestButton from '../components/TestButton';
-import ButtonPanel from '../components/ButtonPanel';
+import TestBottomPanel from '../components/TestButtonPanel';
 
 import getChatGptQuestion from '../hooks/getChatGptQuestion'
 import proccessChatGptQuestion from '../hooks/proccessChatGptQuestion'
+
+import {useDifficulty} from '../components/Context/TestContext'
+
+import TestAltOptionsPanel from '../components/TestAltOptionsPanel'
 
 
 let prevShuffledAnswer = null;
@@ -18,31 +22,57 @@ let prevShuffledAnswer = null;
 
 export default function MultipleChoiceTestScreen({ navigation }) {
 
+  // question & answer states
   const [question, setQuestion] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [wrongAnswerOne, setWrongAnswerOne] = useState(null);
   const [wrongAnswerTwo, setWrongAnswerTwo] = useState(null);
   const [wrongAnswerThree, setWrongAnswerThree] = useState(null);
+
+  // reveal anwer states
   const [revealAnswer, setRevealAnswer] = useState(false);
+  const [falseIndex, setFalseIndex] = useState(null);
+  
+  // user setting state
+  const {difficulty, setDifficulty, domain, setDomain} = useDifficulty();
+
+  // score states
+  const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
+  const [totalAnswers, setTotalAnswers] = useState(0);
  
   const fetchQuestion = async () => {
-      const result = await getChatGptQuestion("advanced", "backend");
-      const {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree} = proccessChatGptQuestion(result);
+
+      const result = await getChatGptQuestion(difficulty, domain);
+      const {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse} = proccessChatGptQuestion(result);
+
+      if (!validResponse) {
+        fetchQuestion();
+        return;
+      }
+
       setQuestion(question);
       setCorrectAnswer(correctAnswer);
       setWrongAnswerOne(wrongAnswerOne);
       setWrongAnswerTwo(wrongAnswerTwo);
       setWrongAnswerThree(wrongAnswerThree);
       setRevealAnswer(false); // reset revealAnswer
+      setFalseIndex(null); // reset revealAnswer
   }
 
   useEffect(() => {
       fetchQuestion();
   }, []);
 
-  const handleAnswer = () => {
+  const handleAnswer = (correct, index) => {
       setRevealAnswer(true); // reveal the correct answer
-      setTimeout(fetchQuestion, 1000); // fetch a new question after 1 second
+      setTotalAnswers(totalAnswers+1);
+      if (!correct) {
+        setFalseIndex(index);
+      }
+      if (correct) {
+        setNumCorrectAnswers(numCorrectAnswers + 1);
+      }
+      setTimeout(fetchQuestion, .5); // fetch a new question after .3 seconds
   }
 
   const answers = [
@@ -65,22 +95,24 @@ export default function MultipleChoiceTestScreen({ navigation }) {
   if (!revealAnswer) {
     prevShuffledAnswer = shuffledAnswers;
   }
+
   
 
   return (
       <View style={styles.container}>
           <Title></Title>
-          <TextBody words={question ? question : 'Loading Question...'} style={styles.text}></TextBody>
-          <ButtonPanel style={styles.buttons}>
+          <TextBody words={question ? question : 'Loading Question...'} style={styles.text} tick = {question ? false : true}></TextBody>
+          <TestBottomPanel style={styles.buttons}>
               {shuffledAnswers.map((answer, index) => 
               <TestButton 
                   key={index} 
                   title={answer.text} 
-                  onPress={handleAnswer}
-                  style={revealAnswer && answer.isCorrect ? {backgroundColor: 'green'} : null}
+                  onPress={(question && !revealAnswer) ? () => {handleAnswer(answer.isCorrect, index)}: null}
+                  style={[revealAnswer && answer.isCorrect ? {backgroundColor: 'green'} : null, (falseIndex !== null && index == falseIndex) ? {backgroundColor: 'red'} : null]}
               />
               )} 
-          </ButtonPanel>
+          </TestBottomPanel>
+          <TestAltOptionsPanel correctAnswers={numCorrectAnswers} totalAnswers = {totalAnswers} style = {styles.altOptions}></TestAltOptionsPanel>
       </View>
   );
 }
@@ -95,6 +127,9 @@ const styles = StyleSheet.create({
     },
     buttons : {
       flex: 7,
+    },
+    altOptions: {
+      flex: 0.5,
     }
 
 });

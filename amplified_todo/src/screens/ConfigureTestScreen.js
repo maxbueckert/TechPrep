@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
-import ButtonPanel from '../components/ButtonPanel';
+import TestConfigBottomPanel from '../components/TestConfigButtonPanel';
 import TestButton from '../components/TestConfigButton';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,22 +24,22 @@ export default function ConfigureTestScreen({navigation}) {
       {!difficultyChosen && (
         <View style={{flex: 8}}>
           <TextBody words = "Select your difficulty" style = {styles.text}/>
-          <ButtonPanel style = {styles.buttons}>
+          <TestConfigBottomPanel style = {styles.buttons}>
             <TestButton title = "Beginner" onPress={() => { setDifficulty(0); setDifficultyChosen(true); }}/>
             <TestButton title = "Intermediate" onPress={() => { setDifficulty(1); setDifficultyChosen(true); }}/>
             <TestButton title = "Advanced" onPress={() => { setDifficulty(2); setDifficultyChosen(true); }}/>
-          </ButtonPanel>
+          </TestConfigBottomPanel>
         </View>
       )}
 
       {difficultyChosen && (
         <View style={{flex: 8}}>
           <TextBody words = "Select your domain" style = {styles.text}/>
-          <ButtonPanel style = {styles.buttons}>
+          <TestConfigBottomPanel style = {styles.buttons}>
             <TestButton title = "Frontend" onPress={() => { setDomain('frontend'); navigation.navigate('PressToStartTestScreen')}}/>
             <TestButton title = "Backend" onPress={() => { setDomain('backend'); navigation.navigate('PressToStartTestScreen') }}/>
             <TestButton title = "Fullstack" onPress={() => { setDomain('fullstack');navigation.navigate('PressToStartTestScreen')}}/>
-          </ButtonPanel>
+          </TestConfigBottomPanel>
         </View>
       )}
     </View>

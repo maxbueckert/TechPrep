@@ -8,7 +8,7 @@ export default function TestButton(props) {
     style={({ pressed }) => [
         styles.button,
         style,
-        { opacity: pressed ? 0.7 : 1 }
+        { opacity: pressed ? 0.4 : 0.7 }
       ]}
     onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
@@ -24,13 +24,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 10,
-    backgroundColor: 'black',
-    width: '70%',
-    height: '15%',
-    marginTop: height * 0.05,
-    marginBottom: height * 0.02,
+    backgroundColor: '#F8F8F8',
+    borderTopColor:'#F8F8F8',
+    borderBottomColor: 'black',
+    borderWidth: 1,
+    width: '100%',
+    flex:1,
     
   },
   text: {
@@ -38,6 +37,8 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
+    color: 'black',
+    opacity: 1,
+    textAlign: 'center',
   },
 });

@@ -10,7 +10,6 @@ export default async function getChatGptFunction(difficulty, domain) {
   
     // Parse the response as JSON
     const data = await response.json();
-    console.log(typeof data)
  
     return data
   }

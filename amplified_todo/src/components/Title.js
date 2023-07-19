@@ -7,8 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import TitleButton from '../components/TitleButton';
 
 export default function Title({ style, home = false }) {
-  // const { height } = Dimensions.get('window');
-  // const titleHeight = height * 0.15; // 15% of the screen height
+
   const navigation = useNavigation();
   return (
     <View style={[styles.container, style, home? styles.adjustedSize : null]}>

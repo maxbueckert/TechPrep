@@ -5,7 +5,7 @@ const DifficultyContext = createContext();
 
 // Create a provider component
 export const TestDetailsContext = ({ children }) => {
-  const [difficulty, setDifficulty] = useState(0);
+  const [difficulty, setDifficulty] = useState(null);
   const [domain, setDomain] = useState(null);
 
 
