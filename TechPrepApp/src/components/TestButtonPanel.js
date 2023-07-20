@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#F8F8F8', // Give it a background color so you can see it
+    backgroundColor: '#F8F8F8', 
   },
 });

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     circleButton: {
         height: height * 0.4,
         width: height * 0.4,
-        borderRadius: height * 0.2, // Half of width or height of the button
+        borderRadius: height * 0.2, // creates circle
         backgroundColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',

@@ -17,6 +17,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingBottom: height * 0.1,
-    backgroundColor: '#F8F8F8', // Give it a background color so you can see it
+    backgroundColor: '#F8F8F8', 
   },
 });

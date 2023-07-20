@@ -9,8 +9,8 @@ import TextBody from '../components/TextBody';
 import TestButton from '../components/TestButton';
 import TestBottomPanel from '../components/TestButtonPanel';
 
-import getChatGptQuestion from '../hooks/getChatGptQuestion'
-import proccessChatGptQuestion from '../hooks/proccessChatGptQuestion'
+import getChatGptQuestion from '../services/getChatGptQuestion'
+import proccessChatGptQuestion from '../services/proccessChatGptQuestion'
 
 import {useDifficulty} from '../components/Context/TestContext'
 
@@ -42,11 +42,11 @@ export default function MultipleChoiceTestScreen({ navigation }) {
       const result = await getChatGptQuestion(difficulty, domain);
       const {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse} = proccessChatGptQuestion(result);
       if (!validResponse) {
-        fetchQuestion(); // recursivley call until valid gpt response is received
+        fetchQuestion(); // recursivley call until valid gpt response is received (need to  add error handling here)
         return; 
       }
-      setRevealAnswer(false); // reset revealAnswer
-      setFalseIndex(null); // reset revealAnswer
+      setRevealAnswer(false); 
+      setFalseIndex(null); 
       const answers = [
         {text: correctAnswer, isCorrect: true, chosen : false}, 
         {text: wrongAnswerOne, isCorrect: false, chosen : false}, 
@@ -69,7 +69,7 @@ export default function MultipleChoiceTestScreen({ navigation }) {
   const handleAnswer = (answer, index) => {
       let correct = answer.isCorrect;
       registerAnswerIsChosen(index);
-      setRevealAnswer(true); // reveal the correct answer
+      setRevealAnswer(true); 
       setTotalAnswers(totalAnswers+1);
       if (!correct) {
         setFalseIndex(index);
@@ -77,7 +77,7 @@ export default function MultipleChoiceTestScreen({ navigation }) {
       if (correct) {
         setNumCorrectAnswers(numCorrectAnswers + 1);
       }
-      setTimeout(fetchQuestion, .5); // fetch a new question after .3 seconds
+      setTimeout(fetchQuestion, .5); // fetch a new question after .5 seconds
   }
 
 
@@ -92,6 +92,7 @@ export default function MultipleChoiceTestScreen({ navigation }) {
 
 
     // Shuffles an array and returns the shuffled array
+    // used to shuffle gpt answers (gpt always returns correct answer in index 0)
     const shuffleArray = (arr) => {
       for(let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -146,8 +147,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     },
     text: {
-      // flex: 1, let flex to fit text;
       padding: 10,
+      // let div fit to content, no flex added
     },
     buttons : {
       flex: 7,
