@@ -4,6 +4,8 @@ import {View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Title from '../components/Title';
 
 import StartTestButton from '../components/StartTestButton';
+import TestConfigButtonPanel from '../components/TestConfigButtonPanel';
+import TestConfigButton from '../components/TestConfigButton';
 
 export default function FinishTestScreen({navigation, route}) {
     let {correctAnswers, totalAnswers} = route.params;
@@ -18,12 +20,11 @@ export default function FinishTestScreen({navigation, route}) {
     return (
         <View style = {styles.container}>
             <Title validB = {false}></Title>
-            <View style = {styles.buttonContainer}>
+            <TestConfigButtonPanel style = {styles.buttonContainer}>
             <Text style = {styles.text}>{"Final Score: " + correctAnswers + " / " + totalAnswers}</Text>
-            {/* <View style = {styles.buttonContainer}>
-                <StartTestButton></StartTestButton>
-            </View> */}
-            </View>
+                <TestConfigButton title = {"Save to Scoreboard"}></TestConfigButton>
+                <TestConfigButton title = {"Main Menu"} onPress={()=>navigation.navigate('HomeScreen')}></TestConfigButton>
+            </TestConfigButtonPanel>
         </View> 
     ); 
 } 
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         },
     buttonContainer: {
-        flex: 8,
+        flex: 7,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor:'#F8F8F8',

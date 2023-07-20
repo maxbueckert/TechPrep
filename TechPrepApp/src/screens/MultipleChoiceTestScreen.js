@@ -146,7 +146,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     },
     text: {
-      flex: 1,
+      // flex: 1, let flex to fit text;
+      padding: 10,
     },
     buttons : {
       flex: 7,
