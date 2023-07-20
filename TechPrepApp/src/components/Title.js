@@ -10,7 +10,7 @@ export default function Title({ style, home = false, backButtonFn = () => {}, fo
   const navigation = useNavigation();
   let {height} = Dimensions.get('window');
   return (
-    <View style={[styles.container, style, home? styles.adjustedSize : null, Platform.OS == 'web' ? {height : 0.12 * height} : {height : 0.16 * height}]}>
+    <View style={[styles.container, style, home? styles.adjustedSize : null, Platform.OS == 'web' ? {height : 0.15 * height} : {height : 0.16 * height}]}>
       {!home && <TitleButton fn="back" onPress = {backButtonFn} validB = {validB}/>}
       <View style={styles.titleContainer}>
         <Text style={styles.text}>TechPrep</Text>
