@@ -6,18 +6,19 @@ import { useNavigation } from '@react-navigation/native';
 
 import TitleButton from '../components/TitleButton';
 
-export default function Title({ style, home = false }) {
+export default function Title({ style, home = false, backButtonFn = () => {}, forwardButtonFn = () => {}, validB = true, validF = false, mcScreen = false}){
   const navigation = useNavigation();
   return (
     <View style={[styles.container, style, home? styles.adjustedSize : null]}>
-      {!home && <TitleButton fn="back" />}
+      {!home && <TitleButton fn="back" onPress = {backButtonFn} validB = {validB}/>}
       <View style={styles.titleContainer}>
         <Text style={styles.text}>TechPrep</Text>
       </View>
-      {!home && <TitleButton fn="home" onPress = {() => navigation.navigate('HomeScreen')}/>}
+      {!home && !mcScreen && <TitleButton fn="home" onPress = {() => navigation.navigate('HomeScreen')}/>}
+      {mcScreen && <TitleButton fn="forward" onPress = {forwardButtonFn} validF = {validF}></TitleButton>}
     </View>
   );
-}
+} 
 
 const styles = StyleSheet.create({
   container: {

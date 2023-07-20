@@ -12,6 +12,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import ConfigureTestScreen from './src/screens/ConfigureTestScreen';
 import PressToStartTestScreen from './src/screens/PressToStartTestScreen';
 import MultipleChoiceTestScreen from './src/screens/MultipleChoiceTestScreen';
+import FinishTestScreen from './src/screens/FinishTestScreen';
 import {TestDetailsContext} from './src/components/Context/TestContext';
 
 
@@ -27,8 +28,9 @@ export default function App() {
           <Stack.Screen name="ConfigureTestScreen" component={ConfigureTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="PressToStartTestScreen" component={PressToStartTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="MultipleChoiceTestScreen" component={MultipleChoiceTestScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="FinishTestScreen" component={FinishTestScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
-    </TestDetailsContext>
+    </TestDetailsContext> 
   );
 }

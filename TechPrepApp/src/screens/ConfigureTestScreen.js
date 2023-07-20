@@ -19,7 +19,7 @@ export default function ConfigureTestScreen({navigation}) {
 
   return (
     <View style = {styles.container}>
-      <Title></Title>
+      <Title backButtonFn = {() => navigation.navigate('HomeScreen')}></Title>
 
       {!difficultyChosen && (
         <View style={{flex: 8}}>
