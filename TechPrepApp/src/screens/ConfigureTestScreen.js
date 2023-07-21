@@ -25,9 +25,9 @@ export default function ConfigureTestScreen({navigation}) {
         <View style={{flex: 8}}>
           <TextBody words = "Select your difficulty" style = {styles.text}/>
           <TestConfigBottomPanel style = {styles.buttons}>
-            <TestButton title = "Beginner" onPress={() => { setDifficulty(0); setDifficultyChosen(true); }}/>
-            <TestButton title = "Intermediate" onPress={() => { setDifficulty(1); setDifficultyChosen(true); }}/>
-            <TestButton title = "Advanced" onPress={() => { setDifficulty(2); setDifficultyChosen(true); }}/>
+            <TestButton title = "Beginner" onPress={() => { setDifficulty("beginner"); setDifficultyChosen(true); }}/>
+            <TestButton title = "Intermediate" onPress={() => { setDifficulty("intermediate"); setDifficultyChosen(true); }}/>
+            <TestButton title = "Advanced" onPress={() => { setDifficulty("expert"); setDifficultyChosen(true); }}/>
           </TestConfigBottomPanel>
         </View>
       )}
