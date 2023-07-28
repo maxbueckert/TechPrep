@@ -1,0 +1,18 @@
+type User 
+  @model 
+  @auth(rules: [{allow: public}])
+  {
+  id: ID!
+  username: String! @index(name: "byUsername", queryField: "getUserByUsername")
+  scores: [Score] @hasMany
+}
+
+type Score 
+  @model 
+  @auth(rules: [{allow: public}]) {
+  id: ID!
+  correct: Int
+  total: Int
+  date: AWSDateTime
+  user: User @belongsTo
+}
