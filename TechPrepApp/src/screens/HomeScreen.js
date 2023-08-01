@@ -6,7 +6,7 @@ import TextBody from '../components/TextBody';
 import TestButton from '../components/TestConfigButton';
 import TestConfigBottomPanel from '../components/TestConfigButtonPanel';
 
-import performCreateUser, {performActions} from '../services/awsAPIaccess/ScoreHandler';
+import performCreateUser, {performActions} from '../services/awsAPIaccess/CheckValidUserAndAddScore';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -20,10 +20,8 @@ export default function HomeScreen({ navigation }) {
         <TextBody words = {"Main Menu"} style = {styles.text}></TextBody>
           <TestConfigBottomPanel style = {styles.buttons}>
             <TestButton title = "Start New Test" onPress={() => navigation.navigate('ConfigureTestScreen')}></TestButton>
-            <TestButton title = "Scoreboard"></TestButton>
+            <TestButton title = "Scoreboard" onPress={() => navigation.navigate('ScoreBoardScreen')}></TestButton>
             <TestButton title = "Settings"></TestButton>
-            <Button onPress = {() => performCreateUser()}></Button>
-            <Button onPress = {() => performActions()}></Button>
           </TestConfigBottomPanel>
     </View>
   );

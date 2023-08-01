@@ -14,6 +14,7 @@ import PressToStartTestScreen from './src/screens/PressToStartTestScreen';
 import MultipleChoiceTestScreen from './src/screens/MultipleChoiceTestScreen';
 import FinishTestScreen from './src/screens/FinishTestScreen';
 import {TestDetailsContext} from './src/components/Context/TestContext';
+import ScoreBoardScreen from './src/screens/ScoreBoardScreen';
 
  
 
@@ -29,6 +30,7 @@ export default function App() {
           <Stack.Screen name="PressToStartTestScreen" component={PressToStartTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="MultipleChoiceTestScreen" component={MultipleChoiceTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="FinishTestScreen" component={FinishTestScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="ScoreBoardScreen" component={ScoreBoardScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </TestDetailsContext> 
