@@ -9,10 +9,10 @@ import Amplify from 'aws-amplify';
 
 // Amplify.configure(myAmplifyConfig);
 
-import { AWS_APPSYNC_APIKEY } from '@env'
+import { APPSYNC_APIKEY } from '@env'
 
 Amplify.configure({
   // Other configuration
   aws_appsync_authenticationType: 'API_KEY',
-  aws_appsync_apiKey: AWS_APPSYNC_APIKEY,
+  aws_appsync_apiKey: APPSYNC_APIKEY,
 });
