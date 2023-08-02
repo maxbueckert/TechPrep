@@ -6,7 +6,7 @@ import TextBody from '../components/TextBody';
 import TestButton from '../components/TestConfigButton';
 import TestConfigBottomPanel from '../components/TestConfigButtonPanel';
 
-import performCreateUser, {performActions} from '../services/awsAPIaccess/CheckValidUserAndAddScore';
+import performCreateUser, {performActions} from '../services/awsGraphQLaccess/scoreData/CheckValidUserAndAddScore';
 
 
 import { NavigationContainer } from '@react-navigation/native';

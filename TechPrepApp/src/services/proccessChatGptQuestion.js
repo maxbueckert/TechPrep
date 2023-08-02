@@ -12,6 +12,10 @@ export default function processChatGptQuestion(str) {
     if (lines.length != 5) {
         validResponse = false;
     }
+    for (let i = 0; i < length; i++) {
+        if (lines[i] == null)
+            validResponse = false;
+    }
 
     console.log("proccesed" + correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse);
     return {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse};

@@ -188,3 +188,161 @@ export const syncScores = /* GraphQL */ `
     }
   }
 `;
+export const getQuestion = /* GraphQL */ `
+  query GetQuestion($id: ID!) {
+    getQuestion(id: $id) {
+      id
+      question
+      correctAnswer
+      wrongAnswerOne
+      wrongAnswerTwo
+      wrongAnswerThree
+      difficulty
+      domain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listQuestions = /* GraphQL */ `
+  query ListQuestions(
+    $filter: ModelQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        question
+        correctAnswer
+        wrongAnswerOne
+        wrongAnswerTwo
+        wrongAnswerThree
+        difficulty
+        domain
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncQuestions = /* GraphQL */ `
+  query SyncQuestions(
+    $filter: ModelQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncQuestions(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        question
+        correctAnswer
+        wrongAnswerOne
+        wrongAnswerTwo
+        wrongAnswerThree
+        difficulty
+        domain
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getQuestionDifficulty = /* GraphQL */ `
+  query GetQuestionDifficulty(
+    $difficulty: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getQuestionDifficulty(
+      difficulty: $difficulty
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        question
+        correctAnswer
+        wrongAnswerOne
+        wrongAnswerTwo
+        wrongAnswerThree
+        difficulty
+        domain
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getQuestionByDomain = /* GraphQL */ `
+  query GetQuestionByDomain(
+    $domain: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getQuestionByDomain(
+      domain: $domain
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        question
+        correctAnswer
+        wrongAnswerOne
+        wrongAnswerTwo
+        wrongAnswerThree
+        difficulty
+        domain
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;

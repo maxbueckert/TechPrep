@@ -139,3 +139,63 @@ export const onDeleteScore = /* GraphQL */ `
     }
   }
 `;
+export const onCreateQuestion = /* GraphQL */ `
+  subscription OnCreateQuestion($filter: ModelSubscriptionQuestionFilterInput) {
+    onCreateQuestion(filter: $filter) {
+      id
+      question
+      correctAnswer
+      wrongAnswerOne
+      wrongAnswerTwo
+      wrongAnswerThree
+      difficulty
+      domain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateQuestion = /* GraphQL */ `
+  subscription OnUpdateQuestion($filter: ModelSubscriptionQuestionFilterInput) {
+    onUpdateQuestion(filter: $filter) {
+      id
+      question
+      correctAnswer
+      wrongAnswerOne
+      wrongAnswerTwo
+      wrongAnswerThree
+      difficulty
+      domain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteQuestion = /* GraphQL */ `
+  subscription OnDeleteQuestion($filter: ModelSubscriptionQuestionFilterInput) {
+    onDeleteQuestion(filter: $filter) {
+      id
+      question
+      correctAnswer
+      wrongAnswerOne
+      wrongAnswerTwo
+      wrongAnswerThree
+      difficulty
+      domain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;

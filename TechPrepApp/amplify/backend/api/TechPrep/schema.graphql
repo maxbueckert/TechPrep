@@ -16,3 +16,16 @@ type Score
   date: AWSDateTime
   user: User @belongsTo
 }
+
+type Question
+  @model
+  @auth(rules: [{allow: public}]) {
+  id: ID!
+  question: String!
+  correctAnswer: String!
+  wrongAnswerOne: String!
+  wrongAnswerTwo: String!
+  wrongAnswerThree: String!
+  difficulty: String! @index(name: "byDifficulty", queryField: "getQuestionDifficulty")
+  domain: String! @index(name: "byDomain", queryField: "getQuestionByDomain")
+  }

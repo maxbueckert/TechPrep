@@ -1,6 +1,6 @@
 import { Text, View, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
 import React, { useEffect, useState, useRef } from 'react';
-import CheckValidUserAndAddScore from '../services/awsAPIaccess/CheckValidUserAndAddScore';
+import CheckValidUserAndAddScore from '../services/awsGraphQLaccess/scoreData/CheckValidUserAndAddScore';
 
 function SignInPopup({style, onPress, correct, total}) {
     const [userText, setUserText] = useState('');

@@ -1,6 +1,6 @@
 
 import { Button, View, Text, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
@@ -10,12 +10,19 @@ import TestButton from '../components/TestConfigButton';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import {useDifficulty} from '../components/Context/TestContext'
+
 export default function ConfigureTestScreen({navigation}) {
 
-  const [difficulty, setDifficulty] = useState(0);
-  const [domain, setDomain] = useState(null);
+  // const [difficulty, setDifficulty] = useState(0);
+  // const [domain, setDomain] = useState(null);
+
+  let {difficulty, setDifficulty, domain, setDomain} = useDifficulty();
 
   const [difficultyChosen, setDifficultyChosen] = useState(false);
+
+
+
 
   return (
     <View style = {styles.container}>

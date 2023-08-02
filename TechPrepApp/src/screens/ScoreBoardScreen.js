@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from 'react';
+import React, { useEffect , useState, useRef } from 'react';
 import { Button, View, Text, StyleSheet, Dimensions} from 'react-native';
 
 import Title from '../components/Title';
@@ -6,19 +6,21 @@ import TextBody from '../components/TextBody';
 import TestButton from '../components/TestConfigButton';
 import TestConfigBottomPanel from '../components/TestConfigButtonPanel';
 
-import performCreateUser, {performActions} from '../services/awsAPIaccess/CheckValidUserAndAddScore';
+import performCreateUser, {performActions} from '../services/awsGraphQLaccess/scoreData/CheckValidUserAndAddScore';
 
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import GenerateScoreBoard from '../services/awsAPIaccess/GenerateScoreBoard';
-import GetUserFromID from '../services/awsAPIaccess/GetUserFromID';
+import GenerateScoreBoard from '../services/awsGraphQLaccess/scoreData/GenerateScoreBoard';
+import GetUserFromID from '../services/awsGraphQLaccess/scoreData/GetUserFromID';
  
 
 export default function ScoreBoardScreen({ navigation }) {
   const [scores, setScores] = useState([]);
   const [idMap, setIdMap] = useState({});
+
+  const [loaded, setLoaded] = useState(false);
 
   async function fetchScores() {
    let newScores = await GenerateScoreBoard();
@@ -44,10 +46,20 @@ export default function ScoreBoardScreen({ navigation }) {
     fetchScores();
   }, []);
 
+  const initialRender = useRef(true);
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      setLoaded(true);
+    }
+  }, [scores]);
+
   return (
     <View style = {styles.container}>
       <Title home = {false}></Title>
-        <TextBody words = {"ScoreBoard"} style = {styles.text}></TextBody>
+        <TextBody words = {loaded? "ScoreBoard" : "Loading ScoreBoard"} style = {styles.text} tick = {loaded? false : true}></TextBody>
         <View style = {styles.mapbox}>
         {scores.map((score, index) => (
           <View style = {styles.scoreContainer} key = {index}>

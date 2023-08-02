@@ -17,6 +17,10 @@ import {useDifficulty} from '../components/Context/TestContext'
 import TestAltOptionsPanel from '../components/TestAltOptionsPanel'
 import { setStatusBarNetworkActivityIndicatorVisible } from 'expo-status-bar';
 
+import GetQuestion from '../services/awsGraphQLaccess/questionData/GetQuestion';
+import StoreQuestion from '../services/awsGraphQLaccess/questionData/StoreQuestion';
+import { ConsoleLogger } from '@aws-amplify/core';
+
 
 export default function MultipleChoiceTestScreen({ navigation }) {
 
@@ -39,12 +43,45 @@ export default function MultipleChoiceTestScreen({ navigation }) {
  
   const fetchQuestion = async () => {
 
-      const result = await getChatGptQuestion(difficulty, domain);
-      const {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse} = proccessChatGptQuestion(result);
-      if (!validResponse) {
-        fetchQuestion(); // recursivley call until valid gpt response is received (need to  add error handling here)
-        return; 
+    // generate random number between 0 and 10
+    // if even, we choose a question we already have in our database
+    // if odd, we choose to generate a new question from chatGPT, and store it in our database
+
+      let randomNumber = Math.floor(Math.random() * 10) + 1;
+      let question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree;
+
+      if (randomNumber % 2) {
+        // GENERATE QUESTION FROM OUR DATABASE
+        console.log("local question: ")
+        let questionData;
+        try {
+          questionData = await GetQuestion(difficulty, domain);
+        } catch (e) {
+          console.log('error getting quetion locally (likley no questions stored for these conditions');
+          fetchQuestion();
+          return;
+        }
+        ({question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree} = questionData);
       }
+      
+      
+  
+      else {
+        // GENERATE QUESTION FROM CHATGPT, AND STORE
+        console.log("chatGPT question: ")
+        let validResponse;
+        // generate quetion from ChatGPT 
+        const result = await getChatGptQuestion(difficulty, domain);
+         ({question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse} = proccessChatGptQuestion(result));
+        if (!validResponse) {
+          fetchQuestion(); // recursivley call until valid gpt response is received (need to  add error handling here)
+          return; 
+        }
+        // store chatGPT generate questions
+        await storeQuestionsInDatabase(question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, difficulty, domain);
+    }
+
+
       setRevealAnswer(false); 
       setFalseIndex(null); 
       const answers = [
@@ -60,6 +97,23 @@ export default function MultipleChoiceTestScreen({ navigation }) {
       setCurScreenIndex(prev=>prev+1);
   }
 
+  const storeQuestionsInDatabase = async (question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, difficulty, domain) => {
+    try {
+      await StoreQuestion({
+        question : question,
+        correctAnswer: correctAnswer, 
+        wrongAnswerOne: wrongAnswerOne,
+        wrongAnswerTwo: wrongAnswerTwo,
+        wrongAnswerThree: wrongAnswerThree,
+        difficulty: difficulty,
+        domain: domain
+      })
+      console.log('stored')
+    }
+    catch (err) {
+      console.log("couldnt store question, caught in FE")
+    }
+  }
 
 
   useEffect(() => {

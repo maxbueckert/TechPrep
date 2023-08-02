@@ -71,3 +71,43 @@ export declare type Score = LazyLoading extends LazyLoadingDisabled ? EagerScore
 export declare const Score: (new (init: ModelInit<Score>) => Score) & {
   copyOf(source: Score, mutator: (draft: MutableModel<Score>) => MutableModel<Score> | void): Score;
 }
+
+type EagerQuestion = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Question, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly question: string;
+  readonly correctAnswer: string;
+  readonly wrongAnswerOne: string;
+  readonly wrongAnswerTwo: string;
+  readonly wrongAnswerThree: string;
+  readonly difficulty: string;
+  readonly domain: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyQuestion = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Question, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly question: string;
+  readonly correctAnswer: string;
+  readonly wrongAnswerOne: string;
+  readonly wrongAnswerTwo: string;
+  readonly wrongAnswerThree: string;
+  readonly difficulty: string;
+  readonly domain: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Question = LazyLoading extends LazyLoadingDisabled ? EagerQuestion : LazyQuestion
+
+export declare const Question: (new (init: ModelInit<Question>) => Question) & {
+  copyOf(source: Question, mutator: (draft: MutableModel<Question>) => MutableModel<Question> | void): Question;
+}

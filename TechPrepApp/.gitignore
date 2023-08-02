@@ -11,6 +11,10 @@ npm-debug.*
 temp/
 /temp/
 /temp
+.env
+/.env
+/.env/
+.env/
 # web-build/
 
 # i added this
