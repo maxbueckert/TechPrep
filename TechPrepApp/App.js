@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { View, Text, Button, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -16,23 +14,35 @@ import FinishTestScreen from './src/screens/FinishTestScreen';
 import {TestDetailsContext} from './src/components/Context/TestContext';
 import ScoreBoardScreen from './src/screens/ScoreBoardScreen';
 
- 
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+import { colors } from './src/themeColors/lightThemeColor';
 
 const Stack = createStackNavigator();
 
+
 export default function App() {
+
+  
+  const theme = {
+    ...DefaultTheme,
+    colors: colors,
+
+  };
   return (
-    <TestDetailsContext>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeScreen">
-          <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
-          <Stack.Screen name="ConfigureTestScreen" component={ConfigureTestScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="PressToStartTestScreen" component={PressToStartTestScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="MultipleChoiceTestScreen" component={MultipleChoiceTestScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="FinishTestScreen" component={FinishTestScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="ScoreBoardScreen" component={ScoreBoardScreen} options={{ headerShown: false }} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </TestDetailsContext> 
+    <PaperProvider theme={theme}>
+      <TestDetailsContext>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="HomeScreen">
+            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="ConfigureTestScreen" component={ConfigureTestScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="PressToStartTestScreen" component={PressToStartTestScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="MultipleChoiceTestScreen" component={MultipleChoiceTestScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="FinishTestScreen" component={FinishTestScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="ScoreBoardScreen" component={ScoreBoardScreen} options={{ headerShown: false }} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </TestDetailsContext> 
+    </PaperProvider>
   );
 }

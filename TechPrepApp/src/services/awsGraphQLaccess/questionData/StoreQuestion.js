@@ -8,15 +8,6 @@ import "../amplifyConfig";
 
 export default async function StoreQuestion(questionObject) {
     let {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, difficulty, domain} = questionObject;
-
-    console.log(question)
-    console.log(correctAnswer);
-    console.log(wrongAnswerOne);
-    console.log(wrongAnswerTwo);
-    console.log(wrongAnswerThree);
-    console.log(difficulty);
-    console.log(domain);
-
     try {
         const result = await API.graphql(graphqlOperation(createQuestion, { input: {
           question: question,

@@ -6,8 +6,8 @@ export default function TestScoreIcon({correctAnswers, totalAnswers}) {
 
     return (
        <View style = {styles.container}>
-        <Text style = {styles.text}> {correctAnswers}  / </Text>
-        <Text style = {styles.text}> {totalAnswers} </Text>
+        <Text style = {[styles.text, {color:'black'}]}> {correctAnswers + ' '}  </Text>
+        <Text style = {[styles.text, {color: 'black'}]}> {totalAnswers} </Text>
        </View>
     );
 }
@@ -20,12 +20,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     text: {
-        fontSize: 16,
+        fontSize: 20,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'black',
         textAlign: 'center',
+        textShadowColor: 'white', // Change this to the color of your outline
+        textShadowRadius: 1
     }
 
 });

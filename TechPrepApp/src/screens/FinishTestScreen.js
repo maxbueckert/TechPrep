@@ -23,7 +23,7 @@ export default function FinishTestScreen({navigation, route}) {
 
     return (
         <View style = {styles.container}>
-            <Title validB = {false}></Title>
+            <Title mcScreen = {true}></Title>
             <TestConfigButtonPanel style = {styles.buttonContainer}>
             <Text style = {styles.text}>{"Final Score: " + correctAnswers + " / " + totalAnswers}</Text>
                 <TestConfigButton title = {"Save to Scoreboard"} onPress = {() => setSignInPopUp(true)}></TestConfigButton>
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
         },
     buttonContainer: {
         flex: 7,
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor:'#F8F8F8',
     },

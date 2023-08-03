@@ -1,27 +1,20 @@
 import React from 'react';
-import { Button, View, Text, StyleSheet} from 'react-native';
+import { View, StyleSheet} from 'react-native';
 
 import Title from '../components/Title';
 import TextBody from '../components/TextBody';
 import TestButton from '../components/TestConfigButton';
 import TestConfigBottomPanel from '../components/TestConfigButtonPanel';
-
-import performCreateUser, {performActions} from '../services/awsGraphQLaccess/scoreData/CheckValidUserAndAddScore';
-
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
  
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style = {styles.container}>
       <Title home = {true}></Title>
-        <TextBody words = {"Main Menu"} style = {styles.text}></TextBody>
           <TestConfigBottomPanel style = {styles.buttons}>
-            <TestButton title = "Start New Test" onPress={() => navigation.navigate('ConfigureTestScreen')}></TestButton>
-            <TestButton title = "Scoreboard" onPress={() => navigation.navigate('ScoreBoardScreen')}></TestButton>
-            <TestButton title = "Settings"></TestButton>
+            <TestButton icon = 'head-question-outline' title = "Start New Test" onPress={() => navigation.navigate('ConfigureTestScreen')}></TestButton>
+            <TestButton icon = 'view-list-outline' title = "Scoreboard" onPress={() => navigation.navigate('ScoreBoardScreen')}></TestButton>
+            <TestButton icon = 'cog-outline' title = "Settings" onPress={() => navigation.navigate('ScoreBoardScreen')}></TestButton>
           </TestConfigBottomPanel>
     </View>
   );

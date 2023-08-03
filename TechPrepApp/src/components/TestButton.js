@@ -1,15 +1,21 @@
 import React from 'react';
 import { Text, View, StyleSheet, Pressable, Dimensions } from 'react-native';
+import { useTheme } from 'react-native-paper';
+
 
 export default function TestButton(props) {
-  const { onPress, title = 'Save', style} = props;
+  const { onPress, title = 'Save', style, bottom} = props;
+  const theme = useTheme();
   return (
     <Pressable
-    style={({ pressed }) => [
-        styles.button,
-        style,
-        { opacity: pressed ? 0.4 : 0.7 }
-      ]}
+    style={[({ pressed }) => [
+        { opacity: pressed ? 0.4 : 1.0 },
+        {borderBottomWidth: pressed? 0.0 : 1.0}
+      ], 
+      styles.button,
+      style, 
+      bottom? {borderBottomWidth: 0} : {borderBottomWidth: 1},
+      {borderBottomColor: theme.colors.outlineVariant}]}
     onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
     </Pressable>
@@ -26,16 +32,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     backgroundColor: '#F8F8F8',
     borderTopColor:'#F8F8F8',
-    borderBottomColor: 'black',
-    borderWidth: 1,
     width: '100%',
     flex:1,
     
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 21,
-    fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'black',
     opacity: 1,

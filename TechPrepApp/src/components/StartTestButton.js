@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button, View, Text, StyleSheet, Pressable, Dimensions} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from 'react-native-paper';
 
 export default function StartTestButton({style}) {
     const [count, setCount] = useState(null);
     const [buttonDisabled, setButtonDisabled] = useState(false);
-
+    const theme = useTheme();
     const navigation = useNavigation();
     useEffect(() => {
       if (count) {
@@ -28,10 +29,10 @@ export default function StartTestButton({style}) {
     };
 
     return (
-        <Pressable style={styles.circleButton} onPress={buttonDisabled? null : handlePress}>
+        <Pressable style={[styles.circleButton, {backgroundColor : theme.colors.primary}]} onPress={buttonDisabled? null : handlePress}>
             <Text 
-            style={styles.buttonText}>
-            {count > 0 ? count: 'Press to Begin Test'}
+            style={[styles.buttonText]}>
+            {count > 0 ? count: 'Start Test'}
             </Text>
         </Pressable>
     );

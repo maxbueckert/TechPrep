@@ -32,9 +32,9 @@ export default function ConfigureTestScreen({navigation}) {
         <View style={{flex: 8}}>
           <TextBody words = "Select your difficulty" style = {styles.text}/>
           <TestConfigBottomPanel style = {styles.buttons}>
-            <TestButton title = "Beginner" onPress={() => { setDifficulty("beginner"); setDifficultyChosen(true); }}/>
-            <TestButton title = "Intermediate" onPress={() => { setDifficulty("intermediate"); setDifficultyChosen(true); }}/>
-            <TestButton title = "Advanced" onPress={() => { setDifficulty("expert"); setDifficultyChosen(true); }}/>
+            <TestButton icon = 'sprout' title = "Beginner" onPress={() => { setDifficulty("beginner"); setDifficultyChosen(true); }}/>
+            <TestButton icon = 'pine-tree' title = "Intermediate" onPress={() => { setDifficulty("intermediate"); setDifficultyChosen(true); }}/>
+            <TestButton icon = 'forest' title = "Advanced" onPress={() => { setDifficulty("expert"); setDifficultyChosen(true); }}/>
           </TestConfigBottomPanel>
         </View>
       )}
@@ -43,9 +43,9 @@ export default function ConfigureTestScreen({navigation}) {
         <View style={{flex: 8}}>
           <TextBody words = "Select your domain" style = {styles.text}/>
           <TestConfigBottomPanel style = {styles.buttons}>
-            <TestButton title = "Frontend" onPress={() => { setDomain('frontend'); navigation.navigate('PressToStartTestScreen')}}/>
-            <TestButton title = "Backend" onPress={() => { setDomain('backend'); navigation.navigate('PressToStartTestScreen') }}/>
-            <TestButton title = "Fullstack" onPress={() => { setDomain('fullstack');navigation.navigate('PressToStartTestScreen')}}/>
+            <TestButton icon = 'monitor-screenshot' title = "Frontend" onPress={() => { setDomain('frontend'); navigation.navigate('MultipleChoiceTestScreen')}}/>
+            <TestButton icon = 'cloud' title = "Backend" onPress={() => { setDomain('backend'); navigation.navigate('MultipleChoiceTestScreen') }}/>
+            <TestButton icon = 'desktop-classic' title = "Fullstack" onPress={() => { setDomain('fullstack');navigation.navigate('MultipleChoiceTestScreen')}}/>
           </TestConfigBottomPanel>
         </View>
       )}

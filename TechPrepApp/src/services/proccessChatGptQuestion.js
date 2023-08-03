@@ -8,15 +8,14 @@ export default function processChatGptQuestion(str) {
     let wrongAnswerOne = lines[2];
     let wrongAnswerTwo = lines[3];
     let wrongAnswerThree = lines[4];
-    let validResponse = true;
     if (lines.length != 5) {
-        validResponse = false;
+        throw error;
     }
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < lines.length; i++) {
         if (lines[i] == null)
-            validResponse = false;
+            throw error;
     }
 
-    console.log("proccesed" + correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse);
-    return {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, validResponse};
+    console.log("proccesed" + correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree);
+    return {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree};
 }
