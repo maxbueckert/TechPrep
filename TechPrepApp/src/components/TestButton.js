@@ -17,7 +17,7 @@ export default function TestButton(props) {
       bottom? {borderBottomWidth: 0} : {borderBottomWidth: 1},
       {borderBottomColor: theme.colors.outlineVariant}]}
     onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={[styles.text, theme.colors.theme == "light" ? {color:'black'} : {color:'white'}]}>{title}</Text>
     </Pressable>
   );
 }
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     letterSpacing: 0.25,
-    color: 'black',
+    // color: 'black',
     opacity: 1,
     textAlign: 'center',
   },

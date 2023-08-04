@@ -1,4 +1,5 @@
 export const colors =  {
+  "theme": "dark",
   "primary": "rgb(220, 184, 255)",
   "onPrimary": "rgb(71, 12, 122)",
   "primaryContainer": "rgb(95, 43, 146)",

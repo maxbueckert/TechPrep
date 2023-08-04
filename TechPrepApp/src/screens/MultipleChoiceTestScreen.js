@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Button, View, Text, StyleSheet} from 'react-native';
+import { useTheme} from 'react-native-paper';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -40,12 +41,25 @@ export default function MultipleChoiceTestScreen({ navigation }) {
   const [prevScreenStates, setPrevScreenStates] = useState([screenState])
   const [curScreenIndex, setCurScreenIndex] = useState(0);
   const [backInTime, setBackInTime] = useState(false);
+
+  const theme = useTheme();
+
+  let correctColor;
+  let incorrectColor;
+
+  if (theme.colors.theme == "light") {
+    correctColor = 'rgba(200, 255, 200, 1)';
+    incorrectColor = 'rgba(255, 200, 200, 1)'
+  } else {
+    correctColor = "#006400"; 
+    incorrectColor = "#8B0000"
+  }
  
   const fetchQuestion = async () => {
-
     // generate random number between 0 and 10
     // if even, we choose a question we already have in our database
     // if odd, we choose to generate a new question from chatGPT, and store it in our database
+
 
       let randomNumber = Math.floor(Math.random() * 10) +1;
       let question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree;
@@ -128,6 +142,18 @@ export default function MultipleChoiceTestScreen({ navigation }) {
       fetchQuestion();
   }, []);
 
+
+
+  const fetchAndDisableNextQuestionButton = async () => {
+     // the is onPress for forward button AFTER USER ANSWERS, i.e., generates new question
+     // set backInTime so that button becomes disabled while new question loads
+      setBackInTime(true);
+      await fetchQuestion();
+      setBackInTime(false);
+  }
+
+
+
   // handle when user clicks on anwswer (reveals correct answer, triggers new answers to be generated, ect)
   // also calls registerAnswerIsChosen()
   const handleAnswer = (answer, index) => {
@@ -141,7 +167,7 @@ export default function MultipleChoiceTestScreen({ navigation }) {
       if (correct) {
         setNumCorrectAnswers(numCorrectAnswers + 1);
       }
-      setTimeout(fetchQuestion, .5); // fetch a new question after .5 seconds
+      // setTimeout(fetchQuestion, .5); // fetch a new question after .5 seconds
   }
 
   // update answer object to store that it was chosen
@@ -197,7 +223,7 @@ export default function MultipleChoiceTestScreen({ navigation }) {
                   key={index} 
                   title={answer? answer.text : null} 
                   onPress={(answer && !revealAnswer && !backInTime) ? () => {handleAnswer(answer, index)}: null}
-                  style={[((revealAnswer || backInTime) && answer.isCorrect) ? [{backgroundColor: 'rgba(200, 255, 200, 1)'}] : {backgroundColor: '#F8F8F8'}, ((falseIndex !== null && index == falseIndex) || backInTime && answer.chosen && !answer.isCorrect) ? [{backgroundColor: 'rgba(255, 200, 200, 1)'}] : null, {flex:1}]}
+                  style={[((revealAnswer || backInTime) && answer.isCorrect) ? [{backgroundColor: correctColor}] : {backgroundColor: theme.colors.background}, ((falseIndex !== null && index == falseIndex) || backInTime && answer.chosen && !answer.isCorrect) ? [{backgroundColor: incorrectColor}] : null, {flex:1}]}
                   bottom = {index==3? true:false}>
               </TestButton> 
   
@@ -207,10 +233,12 @@ export default function MultipleChoiceTestScreen({ navigation }) {
           <TestAltOptionsPanel correctAnswers={numCorrectAnswers} 
                                totalAnswers = {totalAnswers} 
                                style = {styles.altOptions}
-                               validF = {(curScreenIndex == prevScreenStates.length - 1) ? false : true}
+                               validF = {(curScreenIndex != prevScreenStates.length - 1 || revealAnswer && !backInTime) ? true : false}
                                validB = {(curScreenIndex > 1) ? true : false}
                                backfn = {viewPrevScreen}
                                forwardfn = {viewNextScreen}
+                               promptNextQuestion = {revealAnswer && !backInTime? true: false}
+                               promptNextQuestionOnPress = {fetchAndDisableNextQuestionButton}
                                ></TestAltOptionsPanel>
           </View>
   );

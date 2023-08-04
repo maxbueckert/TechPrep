@@ -10,6 +10,9 @@ import { ProgressBar, MD3Colors } from 'react-native-paper';
 
 import FinishTestButton from '../components/FinishTestButton';
 
+
+import MultipleChoiceNavButton from "./MultipleChoiceNavButton";
+
 // export default function TestAltOptionsPanel({style, correctAnswers, totalAnswers}) {
 //   const navigation = useNavigation();
 //   return (
@@ -40,7 +43,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 
-const TestAltOptionsPanel = ({style, correctAnswers, totalAnswers, validF, validB, backfn, forwardfn}) => {
+const TestAltOptionsPanel = ({style, correctAnswers, totalAnswers, validF, validB, backfn, forwardfn, promptNextQuestion, promptNextQuestionOnPress }) => {
   const { bottom } = useSafeAreaInsets();
   const theme = useTheme();
   const navigation = useNavigation();
@@ -53,15 +56,20 @@ const TestAltOptionsPanel = ({style, correctAnswers, totalAnswers, validF, valid
       ]}
       safeAreaInsets={{ bottom }}
     > 
-      <Button disabled = {validB? false: true} icon="step-backward" onPress={backfn} />
-
+      {/* <Button disabled = {validB? false: true} icon="step-backward" onPress={backfn} /> */}
+      <MultipleChoiceNavButton disabled = {validB? false: true} icon="step-backward" onPress={backfn}></MultipleChoiceNavButton>
       <FAB
         icon="check-all"
         label = "Submit"
         size = 'large'
         onPress={() => navigation.navigate('FinishTestScreen', {correctAnswers : correctAnswers, totalAnswers: totalAnswers})}> </FAB>
     
-      <Button disabled = {validF? false: true} icon="step-forward"  onPress={forwardfn}/>
+      {/* <Button disabled = {validF? false: true} icon="step-forward"  onPress={forwardfn}/> */}
+      <MultipleChoiceNavButton  disabled = {validF? false: true}
+                                icon="step-forward"  
+                                onPress={forwardfn}  
+                                promptNextQuestion = {promptNextQuestion}
+                                promptNextQuestionOnPress = {promptNextQuestionOnPress}></MultipleChoiceNavButton>
     </View>
   );
 };
