@@ -33,7 +33,7 @@ export default function App() {
     <PaperProvider theme={theme}>
       <TestDetailsContext>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="HomeScreen">
+          <Stack.Navigator initialRouteName="ScoreBoardScreen">
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="ConfigureTestScreen" component={ConfigureTestScreen} options={{ headerShown: false }} />
             <Stack.Screen name="PressToStartTestScreen" component={PressToStartTestScreen} options={{ headerShown: false }} />
