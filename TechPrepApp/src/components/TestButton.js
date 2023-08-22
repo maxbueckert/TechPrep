@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     letterSpacing: 0.25,
-    // color: 'black',
+    color: 'black',
     opacity: 1,
     textAlign: 'center',
   },

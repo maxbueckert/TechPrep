@@ -12,18 +12,21 @@ import PressToStartTestScreen from './src/screens/PressToStartTestScreen';
 import MultipleChoiceTestScreen from './src/screens/MultipleChoiceTestScreen';
 import FinishTestScreen from './src/screens/FinishTestScreen';
 import {TestDetailsContext} from './src/components/Context/TestContext';
+import {ThemeContext} from './src/components/Context/ThemeContext';
 import ScoreBoardScreen from './src/screens/ScoreBoardScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
 
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import { colors } from './src/themeColors/lightThemeColor';
+import { darkColors } from './src/themeColors/darkThemeColor';
 
 const Stack = createStackNavigator();
 
 
 export default function App() {
 
-  
+
   const theme = {
     ...DefaultTheme,
     colors: colors,
@@ -40,6 +43,7 @@ export default function App() {
             <Stack.Screen name="MultipleChoiceTestScreen" component={MultipleChoiceTestScreen} options={{ headerShown: false }} />
             <Stack.Screen name="FinishTestScreen" component={FinishTestScreen} options={{ headerShown: false }} />
             <Stack.Screen name="ScoreBoardScreen" component={ScoreBoardScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="SettingsScreen" component={SettingsScreen} options={{ headerShown: false }} />
           </Stack.Navigator>
         </NavigationContainer>
       </TestDetailsContext> 

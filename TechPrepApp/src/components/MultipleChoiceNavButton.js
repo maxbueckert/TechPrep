@@ -20,7 +20,7 @@ export default function MyComponent({icon, onPress, disabled, promptNextQuestion
       Animated.timing(color, {
         toValue: 1,
         duration: 200,
-        useNativeDriver: false,
+        useNativeDriver: true,
       }),
     ]).start();
   };
@@ -35,7 +35,7 @@ export default function MyComponent({icon, onPress, disabled, promptNextQuestion
       Animated.timing(color, {
         toValue: 0,
         duration: 200,
-        useNativeDriver: false,
+        useNativeDriver: true,
       }),
     ]).start();
   };

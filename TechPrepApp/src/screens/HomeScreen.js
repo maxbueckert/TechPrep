@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation }) {
           <TestConfigBottomPanel style = {styles.buttons}>
             <TestButton icon = 'head-question-outline' title = "Start New Test" onPress={() => navigation.navigate('ConfigureTestScreen')}></TestButton>
             <TestButton icon = 'view-list-outline' title = "Scoreboard" onPress={() => navigation.navigate('ScoreBoardScreen')}></TestButton>
-            <TestButton icon = 'cog-outline' title = "Settings" onPress={() => navigation.navigate('ScoreBoardScreen')}></TestButton>
+            <TestButton icon = 'cog-outline' title = "Settings" onPress={() => navigation.navigate('SettingsScreen')}></TestButton>
           </TestConfigBottomPanel>
     </View>
   );
